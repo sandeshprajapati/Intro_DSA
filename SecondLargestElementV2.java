@@ -13,7 +13,11 @@ public class SecondLargestElementV2 {
 
 	private static int solve(int[] A) {
 
-		// find the first largest element in array
+		if (A.length <= 1) {
+			return -1;
+		}else if (A.length == 2 && A[0]>A[1]) {
+                return A[1];
+        }
 
 		int max = A[0];
 		int min = A[0];
@@ -25,9 +29,14 @@ public class SecondLargestElementV2 {
 			}
 		}
 
+        if(min==max){
+            return -1;
+        }
+
 		int secondargestElm = 0;
 		for (int i = 0; i < A.length; i++) {
-			if (A[i] > min && A[i] < max) {
+
+			if (secondargestElm <= A[i] && A[i] > min && A[i] < max) {
 				secondargestElm = A[i];
 			}
 		}
